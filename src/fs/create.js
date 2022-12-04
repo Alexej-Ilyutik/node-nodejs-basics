@@ -1,10 +1,14 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+
+const path = './files/fresh.txt';
 
 const create = async () => {
-  fs.open('files/fresh.txt', 'I am fresh and young', (err) => {
-    if (err) throw err;
-    console.log('File created');
+  fs.writeFile(path, 'I am fresh and young', { flag: 'wx' }, (err) => {
+    if (err) {
+      console.error('FS operation failed');
+    } else {
+      console.log('File created');
+    }
   });
 };
 
