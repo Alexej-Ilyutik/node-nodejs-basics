@@ -1,15 +1,18 @@
-import fs from 'fs';
+import { writeFile } from 'fs/promises';
+
+import { errorMessage } from '../constants/errorMessage.js';
 
 const path = './files/fresh.txt';
+const text = 'I am fresh and young';
+const successMessage = 'File create';
 
 const create = async () => {
-  fs.writeFile(path, 'I am fresh and young', { flag: 'wx' }, (err) => {
-    if (err) {
-      console.error('FS operation failed');
-    } else {
-      console.log('File created');
-    }
-  });
+  try {
+    await writeFile(path, text, { flag: 'wx' });
+    console.log(successMessage);
+  } catch (err) {
+    throw new Error(errorMessage);
+  }
 };
 
 await create();
