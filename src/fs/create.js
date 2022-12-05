@@ -1,10 +1,10 @@
 import { writeFile } from 'fs/promises';
 
 import { errorMessage } from '../constants/errorMessage.js';
+import { successMessage } from '../constants/successMessage.js';
 
 const path = './files/fresh.txt';
 const text = 'I am fresh and young';
-const successMessage = 'File create';
 
 const create = async () => {
   try {
